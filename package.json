@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "./node_modules/mocha/bin/mocha test"
+    "test": "./node_modules/mocha/bin/mocha test && ./node_modules/mocha/bin/mocha test/integration && ./node_modules/protractor/bin/protractor test/conf.js",
+    "atest": "./node_modules/protractor/bin/protractor test/conf.js",
+    "itest": "./node_modules/mocha/bin/mocha test/integration",
+    "utest": "./node_modules/mocha/bin/mocha test"
   },
   "dependencies": {
     "body-parser": "~1.15.1",

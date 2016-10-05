@@ -4,10 +4,18 @@ var CurrentRankings = require('../models/currentRankings');
 
 var currentRankingsModel = new CurrentRankings();
 
-router.get('/', function (req, res) {
-  CurrentRankings.forge({}).fetchAll().then(function (collection) {
-    res.json(collection.toJSON())
-  });
+var config = require('config');
+//...
+var officeLocation = config.get('Office.location');
+
+router.get('/', function(req, res) {
+    CurrentRankings.forge({}).fetchAll().then(function(collection) {
+        res.body = "A String"
+        res.render('currentRankings', {
+            location: officeLocation,
+            currentTableJSON: collection.toJSON()
+        });
+    });
 });
 
 module.exports = router;

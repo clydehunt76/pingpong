@@ -1,7 +1,7 @@
 var db = require('../config/db');
 
 var CurrentRankings = db.Model.extend({
-  tableName: 'currentRankings'
+    tableName: 'currentRankings'
 });
 
 module.exports = CurrentRankings;

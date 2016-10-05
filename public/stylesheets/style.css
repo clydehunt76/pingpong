@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+#fsRankingsTable {
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  width: 40%;
+  float: left;
+}
