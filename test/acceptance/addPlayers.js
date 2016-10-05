@@ -54,4 +54,20 @@ describe('Add Players', function() {
 
         })
     })
+
+    describe('Add player Functionality', function() {
+        it("When I supply a player name to the relevant input field and Add Player, details should appear in pending table", (done) => {
+            element(by.id('txtPlayerName')).sendKeys("Clyde Hunt")
+                .then(function(dataKeyed) {
+                    return element(by.buttonText('Add Player')).click()
+                })
+                .then(function(buttonClicked) {
+                    return element(by.id('tablePendingRankings')).getText()
+                })
+                .then(function(tableValues) {
+                    expect(tableValues).to.equal("Player Played Won RankingScore\nClyde Hunt 0 0 0");
+                    done();
+                })
+        })
+    })
 })
