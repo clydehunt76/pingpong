@@ -7,10 +7,51 @@ a {
   color: #00B7FF;
 }
 
-#fsRankingsTable {
+#leftPanel {
+  float: left;
+}
+
+fieldset {
   border-style: solid;
   border-width: 1px;
   border-color: red;
+  padding: 10px;
+}
+
+#fsRankingsTable {
+}
+
+#fsPendingPlayers {
+}
+
+#spacingTables {
+  padding: 20px;
+}
+
+#tableRankings {
+  width: 90%;
+  text-align: center;
+}
+#rankingTableColumn {
+  text-align: center;
+}
+
+#rightPanel {
   width: 40%;
+  float: right;
+}
+
+#fsPlayerForm {
+}
+
+#lblPlayerName{
+  padding-right: 10px;
+}
+#txtPlayerName {
+  /*float: right;*/
+  padding-left: 10px;
+}
+
+#addPlayerButton {
   float: left;
 }

@@ -23,7 +23,7 @@ describe('currentRankings', function() {
         it('returns a list of currentRankings from the database', function(done) {
             var firstPlayer = {
                 player: 'Clyde Hunt',
-                totalPlayed: 0,
+                totalPlayed: 3,
                 totalWon: 0,
                 ranking: 0
             };
@@ -31,10 +31,19 @@ describe('currentRankings', function() {
                 request(app).get('/currentRankings')
                     .end(function(req, res) {
                         expect(res.status).to.equal(200);
-                        console.log("Resp:", res)
                         done();
                     })
             })
+        })
+    })
+
+    describe('GET /', function() {
+        it('redirects to /currentRankings', function(done) {
+            request(app).get('/')
+                .end(function(req, res) {
+                    expect(res.status).to.equal(302);
+                    done();
+                })
         })
     })
 })

@@ -4,5 +4,46 @@ block content
   div(id="headerDiv")
     h1 Table Tennis Rankings (#{location})
 
-  fieldset(id="fsRankingsTable")
-    legend Current Rankings
+  div(id="leftPanel")
+    fieldset(id="fsRankingsTable")
+      legend Current Rankings
+      table(id="tableRankings")
+        thead
+          tr
+            th Player
+            th Played
+            th Won
+            th RankingScore
+        tbody
+        - for player in rankingTableJSON
+          tr
+            td(id="rankingTableColumn") #{player.player}
+            td(id="rankingTableColumn") #{player.totalPlayed}
+            td(id="rankingTableColumn") #{player.totalWon}
+            td(id="rankingTableColumn") #{player.ranking}
+
+    div(id="spacingTables")
+    fieldset(id="fsPendingPlayers")
+      legend Pending Players
+      table(id="tablePendingRankings")
+        thead
+          tr
+            th Player
+            th Played
+            th Won
+            th RankingScore
+        tbody
+        - for pplayer in pendingTableJSON
+          tr
+            td(id="pendingTableColumn") #{pplayer.player}
+            td(id="pendingTableColumn") #{pplayer.totalPlayed}
+            td(id="pendingTableColumn") #{pplayer.totalWon}
+            td(id="pendingTableColumn") #{pplayer.ranking}
+
+  div(id="rightPanel")
+    fieldset(id="fsPlayerForm")
+      legend Add Player
+      div(id="addPlayerInput")
+        label(id="lblPlayerName") Player Name:
+        input(id="txtPlayerName" name="txtPlayerName" type="text")
+      input(id="addPlayerButton" type="button" value="Add Player")
