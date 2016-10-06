@@ -3,7 +3,7 @@ var app = require('../../app');
 var CurrentRankings = require('../../models/currentRankings')
 var db = require('../../config/db');
 
-describe('currentRankings', function() {
+describe('Integration: currentRankings', function() {
     before(function(done) {
         db.knex.migrate.latest()
             .then(function() {

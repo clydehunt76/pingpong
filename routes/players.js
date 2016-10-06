@@ -9,18 +9,27 @@ var config = require('config');
 var officeLocation = config.get('Office.location');
 
 router.post('/', function(req, res) {
-    new CurrentRankings(req.body).save()
-        .then(function(model) {
-            return CurrentRankings.forge({}).query('where', 'totalPlayed', '>', '2').fetchAll()
+    CurrentRankings.forge({}).fetchAll({
+            columns: ['player']
         })
-        .then(function(rankingCollection) {
-            rankingTableData = (rankingCollection ? rankingCollection.toJSON() : {})
-            return CurrentRankings.forge({}).query('where', 'totalPlayed', '<=', '2').fetchAll()
-        })
-        .then(function(pendingCollection) {
-            pendingTableData = (pendingCollection ? pendingCollection.toJSON() : {})
-            res.redirect('/currentRankings');
+        .then(function(playerCollection) {
+            var playerFound = false;
+            newPlayer = req.body;
+            const playerNames = playerCollection.toJSON()
+            playerNames.forEach((element) => {
+                if (element.player == newPlayer.player) {
+                    res.status(500).send('ERROR: Player already exists!');
+                    playerFound = true;
+                }
+            })
+            if (!playerFound) {
+                new CurrentRankings(newPlayer).save().then(function(model) {
+                    res.redirect('/currentRankings');
+                })
+
+            }
         });
+
 })
 
 module.exports = router;

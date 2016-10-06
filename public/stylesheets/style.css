@@ -53,5 +53,10 @@ fieldset {
 }
 
 #addPlayerButton {
-  float: left;
+  float: none;
+}
+
+#divAddPlayerError {
+  color: red;
+  text-align: right;
 }

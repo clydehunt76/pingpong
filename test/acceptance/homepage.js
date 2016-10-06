@@ -8,28 +8,30 @@ var server;
 var config = require('config');
 //...
 
-before(function(done) {
-    server = http.createServer(require('../../app'));
-    server.listen(0);
-    browser.baseUrl = 'http://localhost:' + server.address().port;
-    browser.ignoreSynchronization = true;
-    db.knex.migrate.latest()
-        .then(function() {
-            return CurrentRankings.forge({}).fetchAll()
-        })
-        .then(function(collection) {
-            collection.forEach(function(model) {
-                model.destroy();
-            });
-            done();
-        });
-})
-
-after(function() {
-    server.close();
-});
-
 describe('Home Page Tests', function() {
+
+    before(function(done) {
+        server = http.createServer(require('../../app'));
+        server.listen(0);
+        browser.baseUrl = 'http://localhost:' + server.address().port;
+        browser.ignoreSynchronization = true;
+        db.knex.migrate.latest()
+            .then(function() {
+                return CurrentRankings.forge({}).fetchAll()
+            })
+            .then(function(collection) {
+                collection.forEach(function(model) {
+                    model.destroy();
+                });
+                CurrentRankings.forge({}).fetchAll().then(function(collection) {
+                    done();
+                })
+            });
+    })
+
+    after(function() {
+        server.close();
+    });
 
     beforeEach(function() {
         browser.get('/currentRankings');
