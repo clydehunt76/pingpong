@@ -41,12 +41,45 @@ block content
             td(id="pendingTableColumn") #{pplayer.ranking}
 
   div(id="rightPanel")
+
+    fieldset(id="fsResultForm")
+      legend Add Result
+      label
+        input(type="radio" name="rbSinglesOrDoubles" id = "rbSinglesOrDoubles_Singles" class="rbTeamSize" value="1")
+        | Singles
+      label
+        input(type="radio" name="rbSinglesOrDoubles" id = "rbSinglesOrDoubles_Doubles" class="rbTeamSize" value="2")
+        | Doubles
+
+      div(id="spacingButtons")
+
+      div(class=playerSelects)
+        label Pair 1 Player 1
+          select(id="Pair1Player1", disabled="true")
+      div(class=playerSelects)
+        label Pair 1 Player 2
+          select(id="Pair1Player2", disabled="true")
+      div(class=playerSelects)
+        label Pair 2 Player 1
+          select(id="Pair2Player1", disabled="true")
+      div(class=playerSelects)
+        label Pair 2 Player 2
+          select(id="Pair2Player2", disabled="true")
+
+      div(id="spacingButtons")
+
+      input(id="addResultButton" type="button" value="Add Result")
+      div(id="divAddPlayerError" class="errorMesg")
+
+    div(id="spacingTables")
+
     fieldset(id="fsPlayerForm")
       legend Add Player
       div(id="addPlayerInput")
         label(id="lblPlayerName") Player Name:
         input(id="txtPlayerName" name="txtPlayerName" type="text")
+      div(id="spacingButtons")
       input(id="addPlayerButton" type="button" value="Add Player")
-      div(id="divAddPlayerError")
+      div(id="divAddPlayerError" class="errorMesg")
 
   script(src='/js/currentRankings.js')

@@ -29,4 +29,23 @@ window.onload = function() {
         oReq.send(JSON.stringify(jsonData));
     });
 
+
+    const radioButtonsArray = document.getElementsByClassName("rbTeamSize")
+    Array.prototype.forEach.call(radioButtonsArray, function(radioButton) {
+        radioButton.addEventListener('change', () => {
+            if (document.getElementById("rbSinglesOrDoubles_Singles").checked == true) {
+                document.getElementById("Pair1Player1").disabled = false;
+                document.getElementById("Pair1Player2").disabled = true;
+                document.getElementById("Pair2Player1").disabled = false;
+                document.getElementById("Pair2Player2").disabled = true;
+            }
+            if (document.getElementById("rbSinglesOrDoubles_Doubles").checked == true) {
+                document.getElementById("Pair1Player1").disabled = false;
+                document.getElementById("Pair1Player2").disabled = false;
+                document.getElementById("Pair2Player1").disabled = false;
+                document.getElementById("Pair2Player2").disabled = false;
+            }
+        })
+    });
+
 }

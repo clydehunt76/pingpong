@@ -9,6 +9,7 @@ a {
 
 #leftPanel {
   float: left;
+  width: 45%;
 }
 
 fieldset {
@@ -18,18 +19,16 @@ fieldset {
   padding: 10px;
 }
 
-#fsRankingsTable {
-}
-
-#fsPendingPlayers {
-}
 
 #spacingTables {
   padding: 20px;
 }
 
+#spacingButtons {
+  padding: 5px;
+}
+
 #tableRankings {
-  width: 90%;
   text-align: center;
 }
 #rankingTableColumn {
@@ -37,26 +36,26 @@ fieldset {
 }
 
 #rightPanel {
-  width: 40%;
+  width: 45%;
   float: right;
-}
-
-#fsPlayerForm {
 }
 
 #lblPlayerName{
   padding-right: 10px;
 }
 #txtPlayerName {
-  /*float: right;*/
-  padding-left: 10px;
+  margin-left: 10px;
 }
 
 #addPlayerButton {
   float: none;
 }
 
-#divAddPlayerError {
+.errorMesg {
   color: red;
   text-align: right;
+}
+
+select {
+  margin-left: 10px;
 }
