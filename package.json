@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "knex migrate:latest && node ./bin/www",
     "test": "./node_modules/mocha/bin/mocha test/unit && ./node_modules/mocha/bin/mocha test/integration && ./node_modules/protractor/bin/protractor test/conf.js",
     "atest": "./node_modules/protractor/bin/protractor test/conf.js || true",
     "itest": "./node_modules/mocha/bin/mocha test/integration || true",
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "~1.15.1",
     "bookshelf": "^0.10.2",
+    "config": "^1.21.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.13.4",
@@ -25,5 +26,20 @@
     "chai": "^3.5.0",
     "mocha": "^3.1.0",
     "supertest": "^2.0.0"
-  }
+  },
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clydehunt76/pingpong.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clydehunt76/pingpong/issues"
+  },
+  "homepage": "https://github.com/clydehunt76/pingpong#readme",
+  "description": ""
 }
